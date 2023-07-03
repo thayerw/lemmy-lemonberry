@@ -6,7 +6,7 @@ Both Lemmy and this theme are under rapid development. I'll do my best to only p
 
 ## Installation
 
-The easiest method of installation is to use a CSS injector browser add-on, such as Stylus ([Firefox](https://addons.mozilla.org/en-US/firefox/addon/styl-us/), [Chrome](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne)). Rediggit is also available natively on the lemmy.ca instance.
+The easiest method of installation is to use a CSS injector browser add-on, such as Stylus ([Firefox](https://addons.mozilla.org/en-US/firefox/addon/styl-us/), [Chrome](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne)). Rediggit is also available natively on the [lemmy.ca](https://lemmy.ca/) instance.
 
 ## Screenshots
 
