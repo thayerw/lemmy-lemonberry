@@ -1,0 +1,375 @@
+/* ==UserStyle==
+@name         Rediggit for Lemmy
+@version      20230624.1512
+@namespace    userstyles.world/user/
+@description  A minimalist theme for Lemmy v0.18+, inspired by reddit, digg and hacker news. Originally based on DarkFox's Old Reddit-ish Lemmy theme.
+@author       thayer (@thayer@lemmy.ca)
+@license      Public domain
+==/UserStyle== */
+
+@-moz-document domain("lemmy.ml"), domain("lemmy.world"), domain("beehaw.org"), domain("feddit.de"), domain("sh.itjust.works"), domain("lemmy.one"), domain("lemmy.ca"), domain("midwest.social"), domain("discuss.tchncs.de"), domain("szmer.info"), domain("lemmy.fmhy.ml"), domain("lemmy.glasgow.social"), domain("feddit.it"), domain("lemmy.sdf.org"), domain("feddit.dk"), domain("infosec.pub"), domain("feddit.nl"), domain("lemm.ee") {
+
+    :root {
+		--font-sans: verdana, arial, helvetica, sans-serif;
+		/* remove rounded borders for most elements */
+	  	--bs-border-radius: 0;
+		--bs-border-radius-sm: 0;
+		
+		/* dynamic colors */
+		--bg-light-primary: #fff;
+		--bg-light-secondary: #f8f9fa;
+		--fg-light-title-links: blue;
+		--fg-light-title-links-visited: purple;
+		--bg-dark-primary: #262626;
+		--bg-dark-secondary: #393939;
+		--fg-dark-title-links: white;
+		--fg-dark-title-links-visited: grey;
+    }
+
+    /* set the typeface and drop the overall size */
+    body {
+        font-family: var(--font-sans);
+        font-size: 0.8rem;
+    }
+
+	/* link defaults */
+    a {
+        color: #36a;
+    }
+	
+    /* decrease size of most buttons */
+    .btn-group .btn, 
+	.paginator .btn,
+	div.comments .btn {
+        line-height: 1;
+        font-size: 0.75rem;
+    }
+
+    /* hide user icons, community icons, etc. */
+    main img.rounded-circle {
+        display: none !important;
+    }
+   
+/* navbar */
+    
+    /* spice up navbar */
+    div#app nav.shadow-sm {
+        background: #f8f9fa !important;
+        box-shadow: 0 .075rem 0 rgba(34, 34, 34, .17) !important;
+    }
+
+	/* vertically align the user account menu */
+	#dropdownUser .btn {
+		font-size: 0.85rem !important;
+	}
+
+    /* decrease sizes inside user account menu */
+    #dropdownUser .dropdown-item {
+        line-height: 1;
+        font-size: 0.85rem !important;
+		margin: 0;
+    }
+	
+/* post lists (the feed) */
+	
+	/* decrease size of post sort drop-menu */
+	.form-select {
+		font-size: 0.75rem;
+		line-height: 1;
+	}
+
+    /* disable community banners/logos for now */
+    img.banner, div.mb-2 img { 
+		display: none !important;
+	}
+
+    /* remove horizontal rules between the posts */
+    hr.my-3 {
+        display: none;
+    }
+
+    /* vote icon colour */
+    .vote-bar .text-muted {
+        color:#c6c6c6 !important;
+    }
+
+    /* vote score/button size and density */
+    .vote-bar .btn,
+    .vote-bar .text-muted {
+        font-size: 0.8rem !important;
+        line-height: 1.25 !important;
+    }
+
+    /* thumbnail overlay colour */
+    .text-body {
+        color:#c6c6c6 !important;
+    }
+
+    /* thumbnail dimensions */
+    .post-listing .thumbnail {
+        width: 65px !important;
+        height: 65px !important;
+        object-fit: cover !important;
+    }
+
+	/* hide the post previews */
+	.post-listing .preview-lines {
+		display: none;
+	}
+	
+    /* post metadata icons */
+    .post-listing .btn {
+        font-size: 0.65rem;
+        padding: 0 .375rem;
+    }
+    
+	/* close the gap between post metadata and icon bar */
+	.post-listing .text-body { margin: 0 !important; }
+
+	/* whitespace between post list rows */
+	.post-listing .post-container {
+		margin-bottom: 0.75rem !important;
+	}
+
+    a.text-muted :hover {
+        text-decoration: underline !important;
+    }
+
+    /* post titles */
+    .post-title h5 {
+        margin: 0 !important;
+        line-height: 1.15 !important;
+        font-size: 1rem !important;
+    }
+
+    /* post links */
+    .post-title a { color: blue !important; }
+    .post-title a:visited { color: purple !important; }
+
+    /* post metadata and other muted content */
+    .text-muted,
+	.col-12 span.small {
+        color:#888 !important;
+        font-size: 0.7rem;
+    }
+
+	/* show new comment numbers in different colour and add whitespace */
+	.col-12 a.ps-0 span.text-muted { 
+		color: var(--bs-yellow) !important;
+		font-style: normal !important;
+		padding-left: 0.2rem;
+	}
+	
+
+	/* hide language badge from post metadata */
+	.col-12 span.small .badge { display: none; }
+
+	/* for link posts, place the domain link next to post title (ala old.reddit) */
+	div.post-title { 
+		float: left;
+	}
+	.col-12 p.text-muted:not(:empty) {
+		display: inline !important;
+		margin-left: 0.5rem !important;
+		font-style: italic;
+	}
+	.col-12 p.text-muted:not(:empty)::before {
+		content: "(";
+	}
+	.col-12 p.text-muted:not(:empty)::after {
+		content: ")";
+	}
+	.col-12 .text-muted a:hover {
+	text-decoration: underline;
+	}
+	.col-12 span.small { 
+		display: block;
+		clear: both !important; 
+	}
+
+/* post pages */
+
+	/* link colours for post page metadata */
+    a.person-listing,
+	a.community-listing {
+        color: #36a !important;
+    }
+	
+    /* post formatting */
+    #postContent { 
+        max-width: 1000px;
+        /* margin-left: 140px !important; */
+        padding: 1em !important;
+        font-size: 0.9rem;
+    }
+    
+    /* post body */
+   	#postContent { 
+        border-radius: 0.5rem !important;
+    }
+
+	/* post body headings */
+   	#postContent h1 { font-size: 1.4rem !important; font-weight: bold; }
+   	#postContent h2 { font-size: 1.3rem !important; font-weight: bold; }
+   	#postContent h3 { font-size: 1.1rem !important; font-weight: bold; }
+   	#postContent h4 { font-size:   1rem !important; font-weight: bold; }
+   	#postContent h5 { font-size: 0.9rem !important; font-weight: bold; }
+   	#postContent h6 { font-size: 0.9rem !important; font-weight: bold; }
+	
+    /* comment threads */
+    ul.comments {
+        max-width: 1100px;
+        font-size: 0.9rem;
+        line-height: 1.3;
+    }
+
+	/* hide language badge of individual comments */
+	ul.comments .badge { display: none !important; }
+	
+	/* close the gap between icons and vote/time stats */
+	article[id^="comment-"] .flex-lg-grow-0 {
+		display: none;
+	}
+
+	/* bold comment scores */
+	article[id^="comment-"] a.pointer { font-weight: bold; }
+
+	/* placement of vote/timestamp */
+	article[id^="comment-"] a.pointer :first-of-type {
+		margin-left: 0.65rem;
+	}
+
+	/* add "points" to comment score */
+	article[id^="comment-"] a.pointer ::after {
+		content: " points";
+	}
+
+    /* bolden usernames */
+    ul.comments a.person-listing {
+        font-weight: bold !important;
+    }
+
+    /* comment form formatting */
+    form[id^="markdown-form-"] .mb-3 {
+		margin-top: 1.25rem;
+        max-width: 800px;
+    }
+
+	/* resize parent div when resizing comment form */
+	form[id^="markdown-form-"] div.rounded {
+		display: inline-block;
+	}
+
+    /* comment form textarea */
+    form[id^="markdown-form-"] textarea {
+		resize: both !important;
+        overflow: auto;
+		border: 1px #ccc solid !important;
+        min-height: 120px !important;
+        font-size: 0.75rem;
+        line-height: 1.35;
+    }
+
+	/* Experimental: hide comment box language menu */
+	form[id^="markdown-form-"] select[id^="language-select-"] {
+		display: none;
+	}
+
+	/* Experimental: move post/preview buttons left */
+	form[id^="markdown-form-"] .col-12 .flex-grow-1 {
+		display: none;
+	}
+	form[id^="markdown-form-"] .col-12 .btn {
+		margin-left: 0 !important;
+		margin-right: 0.5rem !important;
+	}
+
+	/* comment density */
+	li.comment article.py-2 {
+		padding: 0.15rem 0 0.5rem !important;
+	}
+
+	/* decrease padding of comment vote row */
+	li.comment .font-weight-bold .btn {
+		font-size: 0.75rem !important;
+		line-height: 1 !important;
+		padding-bottom: 0;
+		opacity: 0.6;
+	}
+
+	/* increase indent for comments */
+	li.comment div.md-div { 
+		padding: 0 1rem 0 0.5rem;	
+	}
+	li.comment ul {
+		margin-left: 1rem !important;
+	}
+	
+	/* comment paragraphs */
+	li.comment p { margin-bottom: 0.5rem;}
+
+	/* make blockquotes more distinct from nested comments */
+	ul.comments blockquote {
+		margin: 0 0 0.5rem;
+		padding: 0.2rem 0 0.2rem 0.4rem;
+		border-left: 2px solid var(--bs-secondary);
+		font-style: italic;
+		color: var(--bs-gray-600);
+	}
+	
+/* sidebar */
+
+    /* sidebar formatting */
+
+	.community-sidebar ol,
+	.site-sidebar ol { padding-left: 1rem;  }
+
+    div#sidebarContainer h1, .site-sidebar h1, .community-sidebar h1 { font-size: 0.8rem !important; font-weight: bold !important;}
+    div#sidebarContainer h2, .site-sidebar h2, .community-sidebar h2  { font-size: 0.8rem !important; font-weight: bold !important;}
+    div#sidebarContainer h3, .site-sidebar h3, .community-sidebar h3  { font-size: 0.8rem !important; font-weight: bold !important;}
+    div#sidebarContainer h4, .site-sidebar h4, .community-sidebar h4  { font-size: 0.8rem !important; font-weight: bold !important;}
+    div#sidebarContainer h5, .site-sidebar h5, .community-sidebar h5  { font-size: 0.9rem !important; font-weight: bold !important;}
+    div#sidebarContainer h6, .site-sidebar h6, .community-sidebar h6  { font-size: 0.85rem !important; font-weight: bold !important;}
+
+/* profile pages */
+
+	/* profile page links */
+	div.person-details a {	
+        color: #36a !important;
+    }
+
+
+/* layout and misc */
+
+    /* overall page width */
+    .container-lg {
+        max-width: 100% !important;
+    }
+
+    /* vote box column */
+    .post-listing .col-1 {
+        width: 65px !important;
+        max-width: 65px!important;
+    }
+
+    /* thumbnail column */
+    .post-listing .col-sm-2 {
+        width: 90px !important;
+        max-width: 90px !important;
+        margin-right: -15px;
+
+    }
+
+    /* content column */
+    .col-md-8 {
+        flex: 0 0 82% !important;
+        max-width: 82% !important;
+    }
+
+    /* sidebar column */
+    .col-md-4 {
+        width: 0 18% !important;
+        max-width: 18% !important;
+        font-size: 0.75rem !important;
+    }
+}

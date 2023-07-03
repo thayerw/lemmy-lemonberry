@@ -1,0 +1,326 @@
+/* ==UserStyle==
+@name         Rediggit for Lemmy
+@version      20230623.1417 (last revision for lemmy v0.17.x)
+@namespace    userstyles.world/user/
+@description  Yet another reddit/digg-inspired theme for Lemmy; based on DarkFox's lemmy theme, "Old reddit-ish Lemmy"
+@author       thayer (@thayer@lemmy.ca)
+@license      Public domain
+==/UserStyle== */
+
+@-moz-document domain("lemmy.ml"), domain("lemmy.world"), domain("beehaw.org"), domain("feddit.de"), domain("sh.itjust.works"), domain("lemmy.one"), domain("lemmy.ca"), domain("midwest.social"), domain("discuss.tchncs.de"), domain("szmer.info"), domain("lemmy.fmhy.ml"), domain("lemmy.glasgow.social"), domain("feddit.it"), domain("lemmy.sdf.org"), domain("feddit.dk"), domain("infosec.pub"), domain("feddit.nl"), domain("lemm.ee") {
+
+    :root {
+      --font-sans: verdana, arial, helvetica, sans-serif;
+    }
+
+    /* set the typeface and drop the overall size a bit */
+    body {
+        font-family: var(--font-sans);
+        font-size: 0.8rem;
+    }
+
+    /* square all buttons */
+    .btn {
+        border-radius: 0 !important;
+    }
+
+    /* square thumbnails, post borders, sidebar borders, alert borders, badge-pills */
+    .rounded, .card, .alert, .badge {
+        border-radius: 0 !important;
+    }
+    
+    /* decrease size of buttons */
+    .btn-group .btn, .my-2 .btn, div.comments .btn {
+        line-height: 1;
+        font-size: 0.75rem;
+    }
+
+    /* hide user icons, community icons, etc. */
+    div.comment img.rounded-circle,
+    .text-muted img.rounded-circle {
+        display: none !important;
+    }
+    
+/* navbar */
+    
+    /* spice up navbar */
+    div#app nav.shadow-sm {
+        background: #f8f9fa !important;
+        box-shadow: 0 .075rem 0 rgba(34, 34, 34, .17) !important;
+    }
+
+    .navbar-brand {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    .navbar ul.my-2 {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+    
+    /* lowercase the instance name and drop the contrast*/
+    a.navbar-brand {
+        text-transform: lowercase;
+        opacity: 0.8;
+    }
+    
+    /* just toying with some ideas
+    a.navbar-brand {
+        text-transform: lowercase;
+        background-size: 25%;
+        padding-left: 2.5em;
+        background-image: url("/static/assets/icons/apple-touch-icon.png") !important;
+        background-repeat: no-repeat;
+        background-position: left 0px bottom -22px;
+    }
+    */
+
+/* post lists (the feed) */
+
+    /* disable community banners/logos for now */
+    img.banner, div.mb-2 img { display: none !important; }
+
+    /* disable horizontal rules between posts */
+    hr.my-3 {
+        display: none;
+    }
+
+    /* vote icon colour */
+    .vote-bar .text-muted {
+        color:#c6c6c6 !important;
+    }
+
+    /* vote score/button size and density */
+    .vote-bar .btn,
+    .vote-bar .text-muted {
+        font-size: 0.9rem !important;
+        line-height: 1.25 !important;
+    }
+
+    /* thumbnail overlay colour */
+    .text-body {
+        color:#c6c6c6 !important;
+    }
+
+    /* thumbnail dimensions */
+    .post-listing .thumbnail {
+        width: 65px !important;
+        height: 65px !important;
+        object-fit: cover !important;
+    }
+
+    /* tighten the individual post entries in the list */
+    .col-12 .mb-1 {
+        margin: -0.1em !important;
+    }
+
+    /* post list icons */
+    .post-listing .btn {
+        font-size: 0.6rem;
+        padding: 0 .375rem;
+    }
+    
+    /* post list comment count */
+    .post-listing .btn .mr-2, .post-listing .btn .small {
+        float: left;
+        font-size: 0.6rem;
+        font-weight: bold;
+        text-transform: lowercase;
+        margin: 0 0.6rem 0 0 !important;
+    }
+
+    a.text-muted :hover {
+        text-decoration: underline !important;
+    }
+
+    /* disable superfluous user/community icons */
+    main.col-12 .rounded-circle,
+    aside.col-md-4 .rounded-circle {
+        display: none !important;
+    }
+
+    .mb-1 span a, .text-info {
+        color: #36a !important;
+    }
+
+    .post-listing {
+        margin: 0.3rem 0 !important;
+    }
+
+    /* post titles */
+    .post-title h5 {
+        margin: 0 !important;
+        line-height: 1.15 !important;
+        font-size: 1rem !important;
+    }
+
+    /* post links */
+    .post-title a { color: blue !important; }
+    .post-title a:visited { color: purple !important; }
+
+    /* post metadata and other muted content */
+    .text-muted {
+        color:#888 !important;
+        font-size: 0.7rem;
+    }
+
+    .list-inline-item:not(:last-child) {
+        margin-right: 0.25rem !important;
+    }
+
+    svg.mr-1 {
+        margin-right: 0.25rem !important;
+    }
+
+    .custom-select {
+        height: calc(1em + .75rem + 2px);
+        padding: .300rem 1rem .300rem .75rem;
+        font-size: 0.75rem;
+    }
+
+
+/* post pages */
+
+    /* hide the GIANT link card above the post, because it's already in the post title */
+    .post-listing .mt-3 { 
+        display: none !important;
+    }
+
+    /* post and alert cards */
+    .post-listing .p-2,
+    .col-12 .alert { 
+        max-width: 900px;
+        /*margin-left: 170px; */
+        padding: 1em !important;
+        font-size: 0.9rem;
+        font-weight: 400;
+    }
+    
+    /* post body */
+    .post-listing .my-2 { 
+        background-color: #f6f6f6 !important;
+        border: 1px solid #ddd !important;
+        border-radius: 0.5rem !important;
+        padding: 2rem !important;
+        margin-left: 0rem !important;
+    }
+
+    /* comment borders */
+    div.comment div {
+        border-top: none !important;
+    }
+
+    /* comment threads */
+    div.comment {
+        max-width: 1100px;
+        margin-left: 1em;
+        font-size: 0.9rem;
+        line-height: 1.3;
+    }
+
+    /* comment thread density */
+    div.comment .py-2 {
+        padding: 0.5rem 0 !important;
+        margin: 0 !important;
+    }
+    
+    /* comment thread paragraphs */
+    div.comment p {
+        margin-top: 0.15rem !important;
+        margin-bottom: 0 !important;
+        padding-bottom: 0.15rem !important;
+    }
+    
+    /* bolden usernames */
+    div.comment a.text-info {
+        font-weight: bold !important;
+    }
+
+    div.comment .md-div a:link {
+      color: #36a !important;
+    }
+
+    /* move the post button underneath wysiwg toolbar
+    form[id^="comment-form-"] .mr-2 { 
+    }
+    */
+    
+    /* move language drop menu to end of toolbar */
+    form[id^="comment-form-"] select[id^="language-select-"] {
+        display: none !important;
+    }
+
+    /* move the comment wysiwg toolbar to the left */
+    form[id^="comment-form-"] .flex-grow-1 { 
+        flex-grow: 0 !important;
+    }
+
+    /* resizable comment form */
+    form[id^="comment-form-"] textarea {
+        resize: both !important;
+        overflow: auto;
+        border-radius: 0 !important;
+        height: 150px;
+        width: 600px;
+        font-size: 0.75rem;
+        line-height: 1.35;
+        margin-top: 0.5rem;
+    }
+
+    /* EXP contain comment preview */
+    div.form-group div.col-sm-12  {
+        max-width: 600px;
+    }
+
+    /* comment metadata spacer before age/upvotes */
+    .mr-lg-5,
+    .mx-lg-5 {
+        margin-right:0 !important;
+    }
+
+/* sidebar */
+
+    /* sidebar headings */
+    .card-body h1 { font-size: 0.8rem !important; font-weight: bold !important;}
+    .card-body h2 { font-size: 0.8rem !important; font-weight: bold !important;}
+    .card-body h3 { font-size: 0.8rem !important; font-weight: bold !important;}
+    .card-body h4 { font-size: 0.8rem !important; font-weight: bold !important;}
+    .card-body h5 { font-size: 0.9rem !important; font-weight: bold !important;}
+    .card-body h6 { font-size: 0.85rem !important; font-weight: bold !important;}
+
+    
+/* layout and misc */
+
+    /* overall page width */
+    .container-lg {
+        max-width: 100% !important;
+    }
+
+    /* vote box column */
+    .post-listing .col-1 {
+        width: 65px !important;
+        max-width: 65px!important;
+    }
+
+    /* thumbnail column */
+    .post-listing .col-sm-2 {
+        width: 90px !important;
+        max-width: 90px !important;
+        margin-right: -15px;
+
+    }
+
+    /* content column */
+    .col-md-8 {
+        flex: 0 0 82% !important;
+        max-width: 82% !important;
+    }
+
+    /* sidebar column */
+    .col-md-4 {
+        width: 0 18% !important;
+        max-width: 18% !important;
+        font-size: 0.75rem !important;
+    }
+}

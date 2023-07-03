@@ -1,0 +1,49 @@
+/* snippets of experimental branding */   
+
+	/* hide instance icons, for now */
+	a.navbar-brand img { 
+		display: none !important;
+	}
+
+	/* lowercase the instance name and drop the contrast*/
+    a.navbar-brand {
+        text-transform: lowercase;
+        color: #0d0 !important;
+		font-weight: normal;
+    }
+
+	/* Experimental: unified lemmy branding with instance name to the right */
+	a.navbar-brand::before {
+		content: "LEMMY >";
+		text-transform: uppercase !important;
+		font-weight: bold;
+		color: #00b24a;
+		font-size: 1.5rem;
+		margin-left: 1rem;
+		margin-right: 0.5rem;
+    }
+	
+	a.navbar-brand::after {
+		content: "";
+		text-transform: uppercase !important;
+		font-weight: bold;
+		color: #00c853;
+		font-size: 1.5rem;
+		margin-left: 0.5rem;
+    }
+   
+    /* just toying with some ideas
+    a.navbar-brand {
+        text-transform: lowercase;
+        background-size: 25%;
+        padding-left: 2.5em;
+        background-image: url("/static/assets/icons/apple-touch-icon.png") !important;
+        background-repeat: no-repeat;
+        background-position: left 0px bottom -22px;
+    }
+    */
+
+    /* bump navbar links over just a bit from the instance name */
+	a.navbar-brand {
+		margin-right: 1rem !important;
+    }
