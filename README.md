@@ -10,6 +10,10 @@ The easiest method of installation is to use a CSS injector browser add-on, such
 
 ## Screenshots
 
-![rediggit front page](https://raw.githubusercontent.com/thayerw/lemmy-rediggit/main/screenshot_01.png)
-![rediggit post page](https://raw.githubusercontent.com/thayerw/lemmy-rediggit/main/screenshot_02.png)
+### Front page
 
+![rediggit front page](https://raw.githubusercontent.com/thayerw/lemmy-rediggit/main/screenshot_01.png)
+
+### Post page
+
+![rediggit post page](https://raw.githubusercontent.com/thayerw/lemmy-rediggit/main/screenshot_02.png)
