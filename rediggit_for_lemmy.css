@@ -1,70 +1,200 @@
 /* ==UserStyle==
-@name         Rediggit for Lemmy
-@version      20230704.2256
+@name         Rediggit for Lemmy (I may change the name in the near future...)
+@version      20230708.1305
 @namespace    userstyles.world/user/thayer
-@description  A flexible, full-width theme for Lemmy v0.18.x, inspired by reddit, digg and hacker news. Additional screenshots and previous versions available at https://github.com/thayerw/lemmy-rediggit 
+@description  A flexible, full-width light and darkmode theme for Lemmy v0.18.1, inspired by reddit, digg and hacker news.
 @author       thayer (@thayer@lemmy.ca)
 @license      Public domain
 ==/UserStyle== */
 
-@-moz-document domain("lemmy.ml"), domain("lemmy.world"), domain("beehaw.org"), domain("sh.itjust.works"), domain("lemmy.one"), domain("lemmy.ca"), domain("midwest.social"), domain("discuss.tchncs.de"), domain("lemmy.fmhy.ml"), domain("feddit.it"), domain("feddit.dk"), domain("infosec.pub"), domain("feddit.nl"), domain("lemm.ee"), domain("lemmy.cafe") {
+@-moz-document domain("beehaw.org"), domain("discuss.tchncs.de"), domain("feddit.dk"), domain("feddit.nl"), domain("infosec.pub"), domain("lemmy.ca"), domain("lemmy.cafe"), domain("lemm.ee"), domain("lemmy.fmhy.ml"), domain("lemmy.ml"), domain("lemmy.sdf.org"), domain("lemmy.world"), domain("midwest.social"), domain("sh.itjust.works") {
 
-  /* import lemmy's default lightly theme first */
-  @import "/css/themes/lightly.css";
+ /* remove rounded corners; comment the below line to restore rounded borders  */
+  .rounded, .card, .alert, .badge, .btn { border-radius: 0 !important; }
 
-  /* remove rounded corners */
-  /* .rounded, .card, .alert, .badge, .btn { border-radius: 0 !important; } */
+  /* set colours for OS/browser with light preference */
+  @media (prefers-color-scheme: light) {
 
-  :root {
-    --font-sans: Arial,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    @import "/css/themes/lightly.css";
 
-    --bs-primary: #0074e8;
-    --bs-secondary: #6ab581;
-    --bs-green: #6ab581;
-    --bs-gray-150: #f0f0f0;
-    --bs-link-color: #04a;
-    --bs-link-color-rgb: 51, 102, 170;
-    --bs-link-hover-color: #04a;
-    --bs-link-hover-color-rgb: 51, 102, 170;
+    :root {
+      --bs-primary: #0074e8;
+      --bs-secondary: #6ab581;
+      --bs-green: #3cb75f;
+      --bs-gray-150: #f0f0f0;
+      --bs-gray-400: #aaa;
+      --bs-gray-500: #888;
+      --bs-link-color: #004d88;
+      --bs-link-color-rgb: 51, 102, 170;
+      --bs-link-hover-color: #04a;
+      --bs-link-hover-color-rgb: 51, 102, 170;
+      --bs-secondary-color: #c6c6c6;
+      --bs-secondary-rgb: 136, 136, 136;
 
-    --bs-secondary-color: #c6c6c6;
-    --bs-secondary-rgb: 136, 136, 136;
-    --bs-gray-400: #aaa;
-    --bs-gray-500: #888;
+      --rediggit-badge-creator: #000;
+      --rediggit-link: #4591ea;
+      --rediggit-link-hover-hot: #ff2c87;
+      --rediggit-link-titles: #0059e8;
+      --rediggit-link-titles-pinned: #3d9e66;
+      --rediggit-link-titles-pinned-visited: #59c687;
+      --rediggit-link-titles-visited: #73a1ec;
+      --rediggit-link-userspace: #3d9e66;
+      --rediggit-navbar-bg: #f0f0f0;
+      --rediggit-navbar-fg: #ffffff;
+      --rediggit-pill-link-bg: #0059e8;
+      --rediggit-pill-link-fg: #fff;
+      --rediggit-pill-static-bg: #e8e8e8;
+      --rediggit-pill-static-fg: #606060;
+      --rediggit-text-primary: #444;
+      --rediggit-text-muted: #aaa;
+      --rediggit-text-secondary: #777;
+    }
 
-    --rediggit-userspace-link: #339d53;
-    --rediggit-button-primary: #6ab581;
-    --rediggit-button-secondary: #579068;
+    /* override some button colours when in light mode */
 
-    --fg-light-title-links: #04f;
-    --fg-light-title-links-visited: #84a;
+    /* colours for some disabled post, preview form buttons */ 
+    .btn:disabled, .btn.disabled, fieldset:disabled .btn {
+      background-color: #a9dbbe;
+      border-color: #a9dbbe;
+    }
+
+    /* sidebar create/explore buttons */
+    .btn-secondary {
+      --bs-btn-color: #fff;
+      --bs-btn-bg: #59c687;
+      --bs-btn-border-color: #59c687;
+      --bs-btn-hover-color: #fff;
+      --bs-btn-hover-bg: #3d9e66;
+      --bs-btn-hover-border-color: #3d9e66;
+      --bs-btn-focus-shadow-rgb: 38, 181, 98;
+      --bs-btn-active-color: #fff;
+      --bs-btn-active-bg: #257e4b;
+      --bs-btn-active-border-color: #257e4b;
+      --bs-btn-active-shadow: inset 0 3px 5px rgba(34, 34, 34, 0.125);
+      --bs-btn-disabled-color: #fff;
+      --bs-btn-disabled-bg: #a9dbbe;
+      --bs-btn-disabled-border-color: #a9dbbe;
+    }
+
+     /* post/comment sorting */
+    .btn-outline-secondary {
+      --bs-btn-color: #59c687;
+      --bs-btn-border-color: #59c687;
+      --bs-btn-hover-color: #fff;
+      --bs-btn-hover-bg: #59c687;
+      --bs-btn-hover-border-color: #59c687;
+      --bs-btn-focus-shadow-rgb: 0, 168, 70;
+      --bs-btn-active-color: #fff;
+      --bs-btn-active-bg: #59c687;
+      --bs-btn-active-border-color: #59c687;
+      --bs-btn-active-shadow: inset 0 3px 5px rgba(34, 34, 34, 0.125);
+      --bs-btn-disabled-color: #fff;
+      --bs-btn-disabled-bg: transparent;
+      --bs-btn-disabled-border-color: #59c687;
+      --bs-gradient: none;
+    }
+
+    /* block community */
+    .btn-danger {
+      --bs-btn-color: #fff;
+      --bs-btn-bg: #d36c6c;
+      --bs-btn-border-color: #d36c6c;
+      --bs-btn-hover-color: #fff;
+      --bs-btn-hover-bg: #be4f4f;
+      --bs-btn-hover-border-color: #be4f4f;
+      --bs-btn-focus-shadow-rgb: 153, 81, 45;
+      --bs-btn-active-color: #fff;
+      --bs-btn-active-bg: #a03939;
+      --bs-btn-active-border-color: #a03939;
+      --bs-btn-active-shadow: inset 0 3px 5px rgba(34, 34, 34, 0.125);
+      --bs-btn-disabled-color: #fff;
+      --bs-btn-disabled-bg: #ffb9b9;
+      --bs-btn-disabled-border-color: #ffb9b9;
+    }
   }
 
-  body {
-    font-family: var(--font-sans);
+  /* set colours for OS/browser with dark preference */
+  @media (prefers-color-scheme: dark) {
+
+    @import "/css/themes/darkly.css";
+    
+    :root {
+      --bs-primary: #0074e8;
+      --bs-secondary: #6ab581;
+      --bs-green: #486c52;
+      --bs-gray-150: #f0f0f0;
+      --bs-gray-400: #aaa;
+      --bs-gray-500: #888;
+      --bs-red: #e74c3c;
+      --bs-link-color: #004d88;
+      --bs-link-color-rgb: 51, 102, 170;
+      --bs-link-hover-color: #04a;
+      --bs-link-hover-color-rgb: 51, 102, 170;
+      --bs-secondary-color: #c6c6c6;
+      --bs-secondary-rgb: 136, 136, 136;
+
+      --rediggit-badge-creator: #fff;
+      --rediggit-link: #6698d7;
+      --rediggit-link-hover-hot: #ff2c87;
+      --rediggit-link-titles: #ddd;
+      --rediggit-link-titles-pinned: #318f4c;
+      --rediggit-link-titles-pinned-visited: #3b6648;
+      --rediggit-link-titles-visited: #777;
+      --rediggit-link-userspace: #257e4b;
+      --rediggit-navbar-bg: #2e2e2e;
+      --rediggit-navbar-fg: #ffffff;
+      --rediggit-pill-link-bg: #04a;
+      --rediggit-pill-link-fg: #c4c4c4;
+      --rediggit-pill-static-bg: #484848;
+      --rediggit-pill-static-fg: #ccc;
+      --rediggit-text-primary: #ddd;
+      --rediggit-text-secondary: #bbb;
+      --rediggit-text-muted: #717171;
+    }
+    
+    /* darken danger buttons, such as community blocker when in dark mode */
+    .btn-danger {
+      --bs-btn-color: #fff;
+      --bs-btn-bg: #602a23;
+      --bs-btn-border-color: #602a23;
+      --bs-btn-hover-color: #fff;
+      --bs-btn-hover-bg: #8b342b;
+      --bs-btn-hover-border-color: #8b342b;
+      --bs-btn-focus-shadow-rgb: 235, 103, 89;
+      --bs-btn-active-color: #fff;
+      --bs-btn-active-bg: #a03227;
+      --bs-btn-active-border-color: #a03227;
+      --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+      --bs-btn-disabled-color: #fff;
+      --bs-btn-disabled-bg: #4f3836;
+      --bs-btn-disabled-border-color: #4f3836;
+    }
   }
 
-  /* by default, underline links when hovered over */
-  a:hover {
-    text-decoration: underline;
-  }
+  body { font-family: Arial,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"; }
 
-  .md-div a {
-    color: var(--rediggit-userspace-link) !important;
-    text-decoration: underline;
-  }
+  /* underline most links when hovered over */
+  a:hover { text-decoration: underline; }
 
-  /* link colours for post metadata */
+  /* but don't underline link text inside buttons  */
+  .btn { text-decoration: none !important; }
+
+
+  /* the link colour for most elements */
+  .md-div a,
   a.person-listing,
   a.community-listing,
-  a.community-link {
-    color: var(--bs-link-color) !important;
+  a.community-link, 
+  .link-dark {
+    color: var(--rediggit-link) !important;
     font-weight: normal;
   }
 
-  /* community title color */
-  #sidebarContainer h5.mb-0 a.community-link {
-    font-size: 1.1rem;
+  /* link colours within user posts and comments (userspace) */
+  #postContent a,
+  li.comment .md-div a {
+    color: var(--rediggit-link-userspace) !important;
+    text-decoration: underline;
   }
 
   /* adjust text whitespace everywhere */
@@ -86,72 +216,68 @@
     display: none !important;
   }
 
-  /* buttons */
-  .btn-secondary {
-    --bs-btn-bg: var(--rediggit-button-primary);
-    --bs-btn-border-color: var(--rediggit-button-primary);
-    --bs-btn-hover-bg: var(--rediggit-button-secondary);
-    --bs-btn-hover-border-color: var(--rediggit-button-secondary);
-    --bs-btn-focus-shadow-rgb: 102, 102, 102;
-    --bs-btn-active-bg: var(--rediggit-button-secondary);
-    --bs-btn-active-border-color: var(--rediggit-button-secondary);
-    --bs-btn-disabled-bg: var(--rediggit-buttons);
-    --bs-btn-disabled-border-color: var(--rediggit-buttons);
+  /* decrease sort/post/nav button heights */
+  .mt-4 .btn, .mt-4 .form-select { line-height: 1; }
+
+  /* community stat pills (users/month, etc.) */
+  ul.badges li { margin-bottom: 0.3rem !important; }
+  ul.badges .text-bg-primary {
+    color: var(--rediggit-pill-link-fg) !important;
+    background-color: var(--rediggit-pill-link-bg) !important;
+  }
+  ul.badges .text-bg-secondary {
+    color: var(--rediggit-pill-static-fg) !important;
+    background-color: var(--rediggit-pill-static-bg) !important;
   }
 
-  /* buttons */
-  .btn-outline-secondary {
-    --bs-btn-color: var(--rediggit-button-primary);
-    --bs-btn-border-color: var(--rediggit-button-primary);
-    --bs-btn-hover-bg: var(--rediggit-button-primary);
-    --bs-btn-hover-border-color: var(--rediggit-button-primary);
-    --bs-btn-focus-shadow-rgb: 136, 136, 136;
-    --bs-btn-active-bg: var(--rediggit-button-primary);
-    --bs-btn-active-border-color: var(--rediggit-button-primary);
-    --bs-btn-disabled-color: var(--rediggit-button-secondary);
-    --bs-btn-disabled-border-color: var(--rediggit-button-secondary);
+  /* more verbose role tags, tweak their style */
+  span[aria-label="admin"], 
+  span[aria-label="mod"] {
+    text-transform: lowercase;
   }
-
-  /* mini pills */
-  .text-bg-primary {
-    color: #fff !important;
-    background-color: var(--bs-blue) !important;
+  span[aria-label="admin"], 
+  span[aria-label="mod"], 
+  span[aria-label="creator"] {
+    background-color: transparent !important;
+    border: 0 !important;
+    padding: 0 0.1rem;
   }
-
-  /* mini pills */
-  .text-bg-secondary {
-    color: #fff !important;
-    background-color: var(--bs-green) !important;
-  }
-
-  /* more verbose role tags, tweak their styles */
-  span[aria-label="admin"], span[aria-label="mod"] { text-transform: lowercase; }
   span[aria-label="admin"]::after { content: "dmin"; }
   span[aria-label="mod"]::after { content: "od"; }
-  span[aria-label="admin"] { background-color: var(--bs-red) !important; }
-  span[aria-label="mod"] { background-color: var(--bs-green) !important; }
-  span[aria-label="creator"] { background-color: var(--bs-blue) !important; }
+  span[aria-label="admin"] { color: var(--bs-red) !important; }
+  span[aria-label="mod"] { color: var(--bs-green) !important; }
+  span[aria-label="creator"] { color: var(--rediggit-badge-creator) !important; }
 
 /* navbar --------------------------------------------------------- */
 
   /* basic navbar styling */
   div.shadow-sm, nav#navbar {
-    background: var(--bs-gray-150) !important;
+    background-color: var(--rediggit-navbar-bg) !important;
     box-shadow: none !important;
   }
 
   /* match background for skip to content link in top left corner */
   .skip-link { display: none; }
 
-  /* don't underline link hovers in the navbar */
-  nav#navbar a:hover {
-    text-decoration: none;
-  }
+  /* bolded instance title */
+  #navTitle { font-weight: bold; }
+
+  /* more whitespace between instance logo and title */
+  #navTitle .me-1 { margin-right: 0.75rem !important; }
+
+  /* add more whitespace after the instance title */
+  #navbarLinks  { margin-left: 5rem; }
+
+  /* don't underline any links in the navbar */
+  #navbar a { text-decoration: none !important; }
+
+  /* bold the primary nav links */
+  /* #navbarLinks a { font-weight: bold; } */
 
 /* post list (feed) ------------------------------------------------- */
 
-    /* disable community banners/logos for now */
-    img.banner, div.mb-2 img {
+  /* disable community banners/logos for now */
+  img.banner, div.mb-2 img {
     display: none !important;
   }
 
@@ -162,19 +288,19 @@
 
   /* vote icon colour */
   .vote-bar .text-muted {
-    color: var(--bs-gray-400) !important;
+    color: var(--rediggit-text-muted) !important;
   }
 
   /* vote score/button size and density */
   .vote-bar .btn,
   .vote-bar .text-muted {
-    font-size: 0.8rem !important;
+    font-size: 0.9rem !important;
     line-height: 1.25 !important;
   }
 
   /* thumbnail overlay colour */
   .text-body {
-    color: var(--bs-gray-400) !important;
+    color: var(--rediggit-text-muted) !important;
   }
 
   /* thumbnail dimensions */
@@ -207,24 +333,30 @@
   }
 
   /* post title links */
-  .post-title a { color: var(--fg-light-title-links) !important; }
-  .post-title a:visited, .post-title a:visited:not(:hover) { color: var(--fg-light-title-links-visited) !important; }
-  .post-title a:hover { text-decoration: none !important; }
+  .post-title a { color: var(--rediggit-link-titles) !important; font-weight: normal; font-size: 1.075rem; }
+  .post-title a:visited, .post-title a:visited:not(:hover) { color: var(--rediggit-link-titles-visited) !important; }
+  .post-title a:hover { text-decoration: none !important; color: var(--rediggit-link-titles) !important; }
+
+  /* stickied post titles */
+  .post-title a.link-primary { color: var(--rediggit-link-titles-pinned) !important; font-weight: bold; }
+  .post-title a.link-primary:visited { color: var(--rediggit-link-titles-pinned-visited) !important; }
 
   /* force markdown titles to be normal weight; lemmy devs really need to sanitize all post titles */
   .post-title strong { font-weight: normal !important; }
 
-  /* adjust the whitespace between post title, metadata, and icon bar */
-  .post-container .col div.mb-1 { line-height: 1.75; }
+  /* NSFW post tags */
+  .post-container .badge {
+    padding: 0.16rem;
+  }
 
-  /* hide post preview whitespace - for v0.18 only */
-  .post-container .col-12 .mt-2 { display: none !important; }
+  /* adjust the whitespace between post title, metadata, and icon bar */
+  .post-container .col div.mb-1 { line-height: 1.5; }
 
   /* post metadata and other muted content */
   .text-muted,
   .col-12 .small {
-    color: var(--bs-gray-500) !important;
-    font-size: 0.7rem;
+    color: var(--rediggit-text-muted) !important;
+    font-size: 0.775rem;
   }
 
   /* bold comment count */
@@ -239,13 +371,15 @@
   }
 
   /* hide language badge from post metadata */
-  .col-12 span.small .badge, div.small .mx-1 { display: none; }
+  /* disabling languages badges messes up profile page post-list metadata */
+  /* language badges should have their own class */
+  /* .col-12 span.small .badge, div.small .mx-1 { display: none; } */
 
   .post-container .col p.m-0 {
     line-height: 1.75;
   }
 
-  /* for link posts, place the domain link next to post title (ala old.reddit) */
+  /* for link posts, place the domain link next to post title (ala old reddit) */
   .post-container div.post-title { 
     float: left;
   }
@@ -265,6 +399,11 @@
     clear: both !important;
   }
 
+/* community pages ------------------------------------------------ */
+  
+  /* hide superfluous community title and link which is already in the sidebar */
+  /* .community .mb-2 { display: none; } */
+
 /* post pages ----------------------------------------------------- */
 
   /* remove post metadata (link post caption) */
@@ -275,37 +414,34 @@
   /* post formatting */
   #postContent {
     max-width: 1000px;
-    color: var(--bs-gray-800);
+    color: var(--rediggit-text-primary);
     font-size: 0.9rem;
     line-height: 1.35;
     padding: 1rem !important;
   }
 
-  #postContent a { color: var(--rediggit-userspace-link); }
-
   /* post body headings */
   #postContent h1 { font-size: 1.4rem !important; font-weight: bold; }
   #postContent h2 { font-size: 1.2rem !important; font-weight: bold; }
-  #postContent h3 { font-size:   1rem !important; font-weight: bold; }
-  #postContent h4 { font-size:   1rem !important; font-weight: normal; font-style: italic;}
+  #postContent h3 { font-size: 1.0rem !important; font-weight: bold; }
+  #postContent h4 { font-size: 1.0rem !important; font-weight: normal; font-style: italic;}
   #postContent h5 { font-size: 0.9rem !important; font-weight: bold; }
   #postContent h6 { font-size: 0.9rem !important; font-weight: normal; font-style: italic; }
 
-  /* comment threads */
+/* comment threads ------------------------------------------------- */
+  
   ul.comments {
     max-width: 1100px;
     font-size: 0.9rem;
     line-height: 1.35;
-    color: var(--bs-gray-800);
+    color: var(--rediggit-text-primary);
   }
-
-  li.comment .md-div a { color: var(--rediggit-userspace-link); }
 
   /* hide language badge of individual comments */
   ul.comments span.text-bg-light { display: none !important; }
 
   /* close the gap between icons and vote/time stats */
-  article[id^="comment-"] .flex-lg-grow-0 {
+  article[id^="comment-"] .flex-lg-grow-0 { 
     display: none;
   }
 
@@ -330,10 +466,6 @@
   ul.comments a.person-listing {
     font-weight: bold !important;
   }
-  ul.comments a.person-listing:hover {
-    color:  var(--bs-gray-900) !important;
-  text-decoration: none;
-  }
 
   /* comment form formatting */
   form[id^="markdown-form-"] .mb-3 {
@@ -350,9 +482,8 @@
   form[id^="markdown-form-"] textarea {
     resize: both !important;
     overflow: auto;
-    border: 1px #ccc solid !important;
     min-height: 120px !important;
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     line-height: 1.35;
   }
 
@@ -397,25 +528,67 @@
     padding: 0.2rem 0 0.2rem 0.4rem;
     border-left: 2px dotted var(--bs-secondary);
     font-style: italic;
-    color: var(--bs-gray-600);
+    color: var(--rediggit-text-muted);
   }
 
 /* profile pages -------------------------------------------------- */
 
   /* vote text links */
-  .person-profile button .ms-2 { font-size: 0.75rem; }
+  .person-profile button .ms-2 { font-size: 0.9rem; }
 
 /* sidebar -------------------------------------------------------- */
 
+  /* bullet indent for sidebar lists */
   .community-sidebar ol,
   .site-sidebar ol { padding-left: 1rem;  }
 
-  div#sidebarContainer h1, .site-sidebar h1, .community-sidebar h1 { font-size: 0.8rem !important; font-weight: bold !important;}
-  div#sidebarContainer h2, .site-sidebar h2, .community-sidebar h2  { font-size: 0.8rem !important; font-weight: bold !important;}
-  div#sidebarContainer h3, .site-sidebar h3, .community-sidebar h3  { font-size: 0.8rem !important; font-weight: bold !important;}
-  div#sidebarContainer h4, .site-sidebar h4, .community-sidebar h4  { font-size: 0.8rem !important; font-weight: bold !important;}
-  div#sidebarContainer h5, .site-sidebar h5, .community-sidebar h5  { font-size: 0.9rem !important; font-weight: bold !important;}
-  div#sidebarContainer h6, .site-sidebar h6, .community-sidebar h6  { font-size: 0.85rem !important; font-weight: bold !important;}
+  /* lower the contrast of most sidebar text */
+  #sidebarContainer .card-body { color: var(--rediggit-text-secondary); }
+
+  /* decrease sidebar headings */
+  #sidebarContainer h1, .site-sidebar h1, .community-sidebar h1 { font-size: 1.3rem !important; font-weight: bold !important;}
+  #sidebarContainer h2, .site-sidebar h2, .community-sidebar h2 { font-size: 1.2rem !important; font-weight: bold !important;}
+  #sidebarContainer h3, .site-sidebar h3, .community-sidebar h3 { font-size: 1.1rem !important; font-weight: bold !important;}
+  #sidebarContainer h4, .site-sidebar h4, .community-sidebar h4 { font-size: 1.1rem !important; font-weight: bold !important;}
+  #sidebarContainer h5, .site-sidebar h5, .community-sidebar h5 { font-size: 1.0rem !important; font-weight: bold !important;}
+  #sidebarContainer h6, .site-sidebar h6, .community-sidebar h6 { font-size: 1.0rem !important; font-weight: bold !important;}
+
+  /* ...but maintain prominent community names */
+  #sidebarMain h2 a.community-link { 
+    font-size: 1.2rem !important; 
+    font-weight: bold !important;
+    color: var(--rediggit-text-primary) !important;
+  }
+
+/* sidebar card styling */
+  #sidebarContainer .card, #sidebarContainer header { 
+    border: 0 !important; 
+  }
+
+  /* community info card */
+  #sidebarContainer #sidebarInfo { 
+    border: none !important;
+    border-bottom: 1px solid var(--bs-gray-700) !important;
+    background: none !important;
+  }
+
+  /* removing more background and borders */
+  #sidebarContainer #sidebarInfo #sidebarInfoHeader { 
+    border: none !important;
+    background: none !important;
+  }
+  
+  /* the instance sidebar card when viewing off-instance communities */
+  .community .site-sidebar .card,
+  .community .site-sidebar .card #sidebarInfoHeader { 
+    border: none !important;
+    background: none !important;
+  }
+
+  .community .site-sidebar #sidebarInfoHeader .card-body,
+  .community .site-sidebar #sidebarInfoBody .card-body {
+    padding-top: 0 !important; 
+  }
 
 /* layout --------------------------------------------------------- */
 
@@ -430,13 +603,6 @@
     max-width: 70px!important;
   }
 
-    /* thumbnail column  - for v0.18 only */
-  .post-listing .col-sm-2 {
-    width: 90px !important;
-    max-width: 90px !important;
-    margin-right: 0px;
-  }
-
   /* content column */
   .col-md-8 {
     flex: 0 0 82% !important;
@@ -447,7 +613,7 @@
   .col-md-4 {
     width: 0 18% !important;
     max-width: 18% !important;
-    font-size: 0.75rem !important;
+    font-size: 0.9rem !important;
   }
 }
 
