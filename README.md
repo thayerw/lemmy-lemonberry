@@ -1,29 +1,24 @@
-# Rediggit
+# Lemonberry
 
-Rediggit is a flexible full-width light and darkmode theme for [Lemmy](https://join-lemmy.org/). Lemmy is a decentralized, free, and open source link aggregator, discussion forum, and reddit alternative. Rediggit is inspired by other link aggregator services, including Reddit, Digg, Hacker News, Lobsters, and Slashdot. It is optimized for desktop use, and may not render correctly on mobile or tablet browsers.
+*Rediggit has been renamed to Lemonberry, to better reflect its separation from Reddit*
 
-The light and dark variants are dynamically assigned based on the client
-OS and/or browser preferences for dark mode.
+Lemonberry is a flexible, full-width light and dark theme for [Lemmy](https://join-lemmy.org/), a decentralized, free, and open source link aggregator, discussion forum, and reddit alternative. Lemonberry is inspired by other link aggregator services, including Reddit, Digg, Hacker News, Lobsters, and Slashdot. It is optimized for desktop use, and may not render as gracefully on mobile or tablet browsers.
 
-Both Lemmy and this theme are under rapid development. I'll do my best to push updates that are well-tested and robust.
+The light and dark variants are dynamically assigned based on your OS and/or browser preference for dark mode. See the stylesheet header for the currently supported Lemmy version(s).
 
-*Note: the name for this theme will likely change in the near future*
+Lemmy and Lemonberry are both under rapid development. I'll do my best to push updates that are well-tested and robust.
 
 ## Installation
 
-The easiest method of installation is to use a CSS injector browser add-on, such as Stylus ([Firefox](https://addons.mozilla.org/en-US/firefox/addon/styl-us/), [Chrome](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne)). Rediggit is also available natively on the [lemmy.ca](https://lemmy.ca/) instance.
+The easiest method of installation is to use a CSS injector browser add-on, such as Stylus ([Firefox](https://addons.mozilla.org/en-US/firefox/addon/styl-us/), [Chrome](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne)).
 
 ## Screenshots
 
-### Light theme
+### Front page
 
-![rediggit front page](https://raw.githubusercontent.com/thayerw/lemmy-rediggit/main/screenshot_light_01.png)
+![lemonberry theme on the Lemmy front page](https://raw.githubusercontent.com/thayerw/lemmy-lemonberry/main/screenshot_01.png)
 
-![rediggit post page](https://raw.githubusercontent.com/thayerw/lemmy-rediggit/main/screenshot_light_02.png)
+### Post page
 
-### Dark theme
-
-![rediggit front page](https://raw.githubusercontent.com/thayerw/lemmy-rediggit/main/screenshot_dark_01.png)
-
-![rediggit post page](https://raw.githubusercontent.com/thayerw/lemmy-rediggit/main/screenshot_dark_02.png)
+![lemonberry theme on a Lemmy post page](https://raw.githubusercontent.com/thayerw/lemmy-lemonberry/main/screenshot_02.png)
 

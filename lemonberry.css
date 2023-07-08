@@ -1,8 +1,9 @@
 /* ==UserStyle==
-@name         Rediggit for Lemmy (I may change the name in the near future...)
-@version      20230708.1305
-@namespace    userstyles.world/user/thayer
-@description  A flexible, full-width light and darkmode theme for Lemmy v0.18.1, inspired by reddit, digg and hacker news.
+@name         Lemonberry
+@version      20230708.1605
+@namespace    https://userstyles.world/user/thayer
+@homepageURL  https://github.com/thayerw/lemmy-lemonberry
+@description  A flexible, full-width light and dark theme for Lemmy v0.18.1, inspired by reddit, digg and hacker news
 @author       thayer (@thayer@lemmy.ca)
 @license      Public domain
 ==/UserStyle== */
@@ -31,23 +32,23 @@
       --bs-secondary-color: #c6c6c6;
       --bs-secondary-rgb: 136, 136, 136;
 
-      --rediggit-badge-creator: #000;
-      --rediggit-link: #4591ea;
-      --rediggit-link-hover-hot: #ff2c87;
-      --rediggit-link-titles: #0059e8;
-      --rediggit-link-titles-pinned: #3d9e66;
-      --rediggit-link-titles-pinned-visited: #59c687;
-      --rediggit-link-titles-visited: #73a1ec;
-      --rediggit-link-userspace: #3d9e66;
-      --rediggit-navbar-bg: #f0f0f0;
-      --rediggit-navbar-fg: #ffffff;
-      --rediggit-pill-link-bg: #0059e8;
-      --rediggit-pill-link-fg: #fff;
-      --rediggit-pill-static-bg: #e8e8e8;
-      --rediggit-pill-static-fg: #606060;
-      --rediggit-text-primary: #444;
-      --rediggit-text-muted: #aaa;
-      --rediggit-text-secondary: #777;
+      --lemonberry-badge-creator: #000;
+      --lemonberry-link: #4591ea;
+      --lemonberry-link-hover-hot: #ff2c87;
+      --lemonberry-link-titles: #0059e8;
+      --lemonberry-link-titles-pinned: #3d9e66;
+      --lemonberry-link-titles-pinned-visited: #59c687;
+      --lemonberry-link-titles-visited: #73a1ec;
+      --lemonberry-link-userspace: #3d9e66;
+      --lemonberry-navbar-bg: #f0f0f0;
+      --lemonberry-navbar-fg: #ffffff;
+      --lemonberry-pill-link-bg: #0059e8;
+      --lemonberry-pill-link-fg: #fff;
+      --lemonberry-pill-static-bg: #e8e8e8;
+      --lemonberry-pill-static-fg: #606060;
+      --lemonberry-text-primary: #444;
+      --lemonberry-text-muted: #aaa;
+      --lemonberry-text-secondary: #777;
     }
 
     /* override some button colours when in light mode */
@@ -133,23 +134,23 @@
       --bs-secondary-color: #c6c6c6;
       --bs-secondary-rgb: 136, 136, 136;
 
-      --rediggit-badge-creator: #fff;
-      --rediggit-link: #6698d7;
-      --rediggit-link-hover-hot: #ff2c87;
-      --rediggit-link-titles: #ddd;
-      --rediggit-link-titles-pinned: #318f4c;
-      --rediggit-link-titles-pinned-visited: #3b6648;
-      --rediggit-link-titles-visited: #777;
-      --rediggit-link-userspace: #257e4b;
-      --rediggit-navbar-bg: #2e2e2e;
-      --rediggit-navbar-fg: #ffffff;
-      --rediggit-pill-link-bg: #04a;
-      --rediggit-pill-link-fg: #c4c4c4;
-      --rediggit-pill-static-bg: #484848;
-      --rediggit-pill-static-fg: #ccc;
-      --rediggit-text-primary: #ddd;
-      --rediggit-text-secondary: #bbb;
-      --rediggit-text-muted: #717171;
+      --lemonberry-badge-creator: #fff;
+      --lemonberry-link: #6698d7;
+      --lemonberry-link-hover-hot: #ff2c87;
+      --lemonberry-link-titles: #ddd;
+      --lemonberry-link-titles-pinned: #318f4c;
+      --lemonberry-link-titles-pinned-visited: #3b6648;
+      --lemonberry-link-titles-visited: #777;
+      --lemonberry-link-userspace: #257e4b;
+      --lemonberry-navbar-bg: #2e2e2e;
+      --lemonberry-navbar-fg: #ffffff;
+      --lemonberry-pill-link-bg: #04a;
+      --lemonberry-pill-link-fg: #c4c4c4;
+      --lemonberry-pill-static-bg: #484848;
+      --lemonberry-pill-static-fg: #ccc;
+      --lemonberry-text-primary: #ddd;
+      --lemonberry-text-secondary: #bbb;
+      --lemonberry-text-muted: #717171;
     }
     
     /* darken danger buttons, such as community blocker when in dark mode */
@@ -185,15 +186,16 @@
   a.person-listing,
   a.community-listing,
   a.community-link, 
-  .link-dark {
-    color: var(--rediggit-link) !important;
+  .link-dark,
+  .post-container .me-2 a {
+    color: var(--lemonberry-link) !important;
     font-weight: normal;
   }
 
   /* link colours within user posts and comments (userspace) */
   #postContent a,
   li.comment .md-div a {
-    color: var(--rediggit-link-userspace) !important;
+    color: var(--lemonberry-link-userspace) !important;
     text-decoration: underline;
   }
 
@@ -222,12 +224,12 @@
   /* community stat pills (users/month, etc.) */
   ul.badges li { margin-bottom: 0.3rem !important; }
   ul.badges .text-bg-primary {
-    color: var(--rediggit-pill-link-fg) !important;
-    background-color: var(--rediggit-pill-link-bg) !important;
+    color: var(--lemonberry-pill-link-fg) !important;
+    background-color: var(--lemonberry-pill-link-bg) !important;
   }
   ul.badges .text-bg-secondary {
-    color: var(--rediggit-pill-static-fg) !important;
-    background-color: var(--rediggit-pill-static-bg) !important;
+    color: var(--lemonberry-pill-static-fg) !important;
+    background-color: var(--lemonberry-pill-static-bg) !important;
   }
 
   /* more verbose role tags, tweak their style */
@@ -246,13 +248,13 @@
   span[aria-label="mod"]::after { content: "od"; }
   span[aria-label="admin"] { color: var(--bs-red) !important; }
   span[aria-label="mod"] { color: var(--bs-green) !important; }
-  span[aria-label="creator"] { color: var(--rediggit-badge-creator) !important; }
+  span[aria-label="creator"] { color: var(--lemonberry-badge-creator) !important; }
 
 /* navbar --------------------------------------------------------- */
 
   /* basic navbar styling */
   div.shadow-sm, nav#navbar {
-    background-color: var(--rediggit-navbar-bg) !important;
+    background-color: var(--lemonberry-navbar-bg) !important;
     box-shadow: none !important;
   }
 
@@ -288,7 +290,7 @@
 
   /* vote icon colour */
   .vote-bar .text-muted {
-    color: var(--rediggit-text-muted) !important;
+    color: var(--lemonberry-text-muted) !important;
   }
 
   /* vote score/button size and density */
@@ -300,7 +302,7 @@
 
   /* thumbnail overlay colour */
   .text-body {
-    color: var(--rediggit-text-muted) !important;
+    color: var(--lemonberry-text-muted) !important;
   }
 
   /* thumbnail dimensions */
@@ -333,13 +335,13 @@
   }
 
   /* post title links */
-  .post-title a { color: var(--rediggit-link-titles) !important; font-weight: normal; font-size: 1.075rem; }
-  .post-title a:visited, .post-title a:visited:not(:hover) { color: var(--rediggit-link-titles-visited) !important; }
-  .post-title a:hover { text-decoration: none !important; color: var(--rediggit-link-titles) !important; }
+  .post-title a { color: var(--lemonberry-link-titles) !important; font-weight: normal; font-size: 1.075rem; }
+  .post-title a:visited, .post-title a:visited:not(:hover) { color: var(--lemonberry-link-titles-visited) !important; }
+  .post-title a:hover { text-decoration: none !important; color: var(--lemonberry-link-titles) !important; }
 
   /* stickied post titles */
-  .post-title a.link-primary { color: var(--rediggit-link-titles-pinned) !important; font-weight: bold; }
-  .post-title a.link-primary:visited { color: var(--rediggit-link-titles-pinned-visited) !important; }
+  .post-title a.link-primary { color: var(--lemonberry-link-titles-pinned) !important; font-weight: bold; }
+  .post-title a.link-primary:visited { color: var(--lemonberry-link-titles-pinned-visited) !important; }
 
   /* force markdown titles to be normal weight; lemmy devs really need to sanitize all post titles */
   .post-title strong { font-weight: normal !important; }
@@ -355,7 +357,7 @@
   /* post metadata and other muted content */
   .text-muted,
   .col-12 .small {
-    color: var(--rediggit-text-muted) !important;
+    color: var(--lemonberry-text-muted) !important;
     font-size: 0.775rem;
   }
 
@@ -374,10 +376,6 @@
   /* disabling languages badges messes up profile page post-list metadata */
   /* language badges should have their own class */
   /* .col-12 span.small .badge, div.small .mx-1 { display: none; } */
-
-  .post-container .col p.m-0 {
-    line-height: 1.75;
-  }
 
   /* for link posts, place the domain link next to post title (ala old reddit) */
   .post-container div.post-title { 
@@ -414,7 +412,7 @@
   /* post formatting */
   #postContent {
     max-width: 1000px;
-    color: var(--rediggit-text-primary);
+    color: var(--lemonberry-text-primary);
     font-size: 0.9rem;
     line-height: 1.35;
     padding: 1rem !important;
@@ -434,7 +432,7 @@
     max-width: 1100px;
     font-size: 0.9rem;
     line-height: 1.35;
-    color: var(--rediggit-text-primary);
+    color: var(--lemonberry-text-primary);
   }
 
   /* hide language badge of individual comments */
@@ -528,7 +526,7 @@
     padding: 0.2rem 0 0.2rem 0.4rem;
     border-left: 2px dotted var(--bs-secondary);
     font-style: italic;
-    color: var(--rediggit-text-muted);
+    color: var(--lemonberry-text-muted);
   }
 
 /* profile pages -------------------------------------------------- */
@@ -543,7 +541,7 @@
   .site-sidebar ol { padding-left: 1rem;  }
 
   /* lower the contrast of most sidebar text */
-  #sidebarContainer .card-body { color: var(--rediggit-text-secondary); }
+  #sidebarContainer .card-body { color: var(--lemonberry-text-secondary); }
 
   /* decrease sidebar headings */
   #sidebarContainer h1, .site-sidebar h1, .community-sidebar h1 { font-size: 1.3rem !important; font-weight: bold !important;}
@@ -557,7 +555,7 @@
   #sidebarMain h2 a.community-link { 
     font-size: 1.2rem !important; 
     font-weight: bold !important;
-    color: var(--rediggit-text-primary) !important;
+    color: var(--lemonberry-text-primary) !important;
   }
 
 /* sidebar card styling */
@@ -599,8 +597,8 @@
 
   /* vote box column */
   .post-listing .vote-bar {
-    width: 70px !important;
-    max-width: 70px!important;
+    width: 60px !important;
+    max-width: 60px!important;
   }
 
   /* content column */
