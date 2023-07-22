@@ -1,18 +1,21 @@
 /* ==UserStyle==
 @name         Lemonberry
-@version      20230708.1605
+@version      20230721.1744
 @namespace    https://userstyles.world/user/thayer
 @homepageURL  https://github.com/thayerw/lemmy-lemonberry
-@description  A flexible, full-width light and dark theme for Lemmy v0.18.1, inspired by reddit, digg and hacker news
+@description  A flexible, full-width light and dark theme for Lemmy v0.18.2, inspired by reddit, digg and hacker news
 @author       thayer (@thayer@lemmy.ca)
-@license      Public domain
+@license      Non-image CSS licensed under CC BY-SA 4.0; images derived from Base64 are licensed under CC BY-NC-ND 4.0
 ==/UserStyle== */
 
-@-moz-document domain("beehaw.org"), domain("discuss.tchncs.de"), domain("feddit.dk"), domain("feddit.nl"), domain("infosec.pub"), domain("lemmy.ca"), domain("lemmy.cafe"), domain("lemm.ee"), domain("lemmy.fmhy.ml"), domain("lemmy.ml"), domain("lemmy.sdf.org"), domain("lemmy.world"), domain("midwest.social"), domain("sh.itjust.works") {
+@-moz-document domain("beehaw.org"), domain("discuss.tchncs.de"), domain("feddit.dk"), domain("feddit.nl"), domain("infosec.pub"), domain("lemmy.ca"), domain("lemmy.cafe"), domain("lemmy.sdf.org"), domain("lemm.ee"), domain("lemmy.fmhy.ml"), domain("lemmy.ml"), domain("lemmy.sdf.org"), domain("lemmy.world"), domain("midwest.social"), domain("programming.dev"), domain("sh.itjust.works"), domain("startrek.website") {
 
- /* remove rounded corners; comment the below line to restore rounded borders  */
-  .rounded, .card, .alert, .badge, .btn { border-radius: 0 !important; }
+  /* to remove any hint of rounded corners; change border-radius below to "0" */
+  .rounded, .card, .alert, .badge, .btn { border-radius: 0.2rem; }
 
+  /* inbox notification badge */
+  li#navMessages .badge { border-radius: 1rem !important; background-color: red !important; color: white !important; }
+  
   /* set colours for OS/browser with light preference */
   @media (prefers-color-scheme: light) {
 
@@ -33,15 +36,16 @@
       --bs-secondary-rgb: 136, 136, 136;
 
       --lemonberry-badge-creator: #000;
-      --lemonberry-link: #4591ea;
+      --lemonberry-link: #7ea0c8;
       --lemonberry-link-hover-hot: #ff2c87;
-      --lemonberry-link-titles: #0059e8;
+      --lemonberry-link-titles: #0445d0;
       --lemonberry-link-titles-pinned: #3d9e66;
       --lemonberry-link-titles-pinned-visited: #59c687;
       --lemonberry-link-titles-visited: #73a1ec;
       --lemonberry-link-userspace: #3d9e66;
       --lemonberry-navbar-bg: #f0f0f0;
       --lemonberry-navbar-fg: #ffffff;
+      --lemonberry-navbar-link-hover: #59c687;
       --lemonberry-pill-link-bg: #0059e8;
       --lemonberry-pill-link-fg: #fff;
       --lemonberry-pill-static-bg: #e8e8e8;
@@ -141,14 +145,15 @@
       --lemonberry-link-titles-pinned: #318f4c;
       --lemonberry-link-titles-pinned-visited: #3b6648;
       --lemonberry-link-titles-visited: #777;
-      --lemonberry-link-userspace: #257e4b;
+      --lemonberry-link-userspace: #458c63;
       --lemonberry-navbar-bg: #2e2e2e;
       --lemonberry-navbar-fg: #ffffff;
+      --lemonberry-navbar-link-hover: #59c687;
       --lemonberry-pill-link-bg: #04a;
       --lemonberry-pill-link-fg: #c4c4c4;
       --lemonberry-pill-static-bg: #484848;
       --lemonberry-pill-static-fg: #ccc;
-      --lemonberry-text-primary: #ddd;
+      --lemonberry-text-primary: #ccc;
       --lemonberry-text-secondary: #bbb;
       --lemonberry-text-muted: #717171;
     }
@@ -187,14 +192,17 @@
   a.community-listing,
   a.community-link, 
   .link-dark,
-  .post-container .me-2 a {
+  .post-container .me-2 a,
+  /* post links on profile pages */
+  li.comment .ms-2 .me-2 {
     color: var(--lemonberry-link) !important;
     font-weight: normal;
   }
 
   /* link colours within user posts and comments (userspace) */
   #postContent a,
-  li.comment .md-div a {
+  li.comment .md-div a,
+  .markdown-textarea .md-div a {
     color: var(--lemonberry-link-userspace) !important;
     text-decoration: underline;
   }
@@ -365,6 +373,21 @@
   .col-12 a.ps-0 { 
     font-weight: bold !important;
   }
+  
+  /* underline comment count when hovered */
+  .col-12 a.ps-0:hover { 
+    text-decoration: underline !important;
+  }
+
+  /* add "comments" to comment count when zero or plural */
+  .col-12 .text-muted a.ps-0[data-tippy-content$="Comments"]::after  { 
+    content: " comments";
+  }
+
+  /* add "comment" to comment count when singular */
+  .col-12 .text-muted a.ps-0[data-tippy-content$="Comment"]::after  { 
+    content: " comment";
+  }
 
   /* show new comment numbers in different colour and add whitespace */
   .post-listing a.btn span { 
@@ -377,9 +400,11 @@
   /* language badges should have their own class */
   /* .col-12 span.small .badge, div.small .mx-1 { display: none; } */
 
-  /* for link posts, place the domain link next to post title (ala old reddit) */
-  .post-container div.post-title { 
-    float: left;
+  /* for link posts, place the domain link next to post title (ala old reddit) - thanks u/sami@lemmy.zip for the mobile fix!*/
+  @media screen and (min-width: 900px) {
+    .post-container div.post-title { 
+      float: left; 
+    }
   }
   .col-12 p.text-muted:not(:empty), .post-container .col p.m-0:not(:empty) {
     display: inline !important;
@@ -434,6 +459,9 @@
     line-height: 1.35;
     color: var(--lemonberry-text-primary);
   }
+
+  /* vote count text between arrows */
+  button .ms-2 { font-size: 0.8rem; }
 
   /* hide language badge of individual comments */
   ul.comments span.text-bg-light { display: none !important; }
@@ -529,11 +557,6 @@
     color: var(--lemonberry-text-muted);
   }
 
-/* profile pages -------------------------------------------------- */
-
-  /* vote text links */
-  .person-profile button .ms-2 { font-size: 0.9rem; }
-
 /* sidebar -------------------------------------------------------- */
 
   /* bullet indent for sidebar lists */
@@ -614,4 +637,6 @@
     font-size: 0.9rem !important;
   }
 }
+
+/* instance logos - coming soon ----------------------------------- */
 
